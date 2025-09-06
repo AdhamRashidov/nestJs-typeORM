@@ -1,16 +1,31 @@
-import { Optional } from "@nestjs/common";
-import { IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { ApiProperty } from "@nestjs/swagger";
+import { IsNotEmpty, IsNumber, IsString, IsOptional } from "class-validator";
 
 export class CreateUniversityDto {
+	@ApiProperty({
+		type: 'string',
+		description: 'Name of University',
+		example: 'Transport'
+	})
 	@IsString()
 	@IsNotEmpty()
 	name: string;
 
+	@ApiProperty({
+		type: 'number',
+		description: 'Number of University',
+		example: '58'
+	})
 	@IsNumber()
-	@Optional()
+	@IsOptional()
 	univerNumber: number;
 
+	@ApiProperty({
+		type: 'string',
+		description: 'Address of University',
+		example: 'Yunusobod'
+	})
 	@IsString()
-	@Optional()
+	@IsOptional()
 	address: string;
 }
